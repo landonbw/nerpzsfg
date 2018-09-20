@@ -1,6 +1,8 @@
-authors = ["Landon Wright <Landon.wright91@gmail.com>"]
 name = "nerpzsgf"
 uuid = "720c7580-bc71-11e8-11f2-f183fa89b431"
+authors = ["Landon Wright <Landon.wright91@gmail.com>"]
 version = "0.1.0"
 
 [deps]
+Clp = "e2554f3b-3117-50c0-817c-e040a3ddf72d"
+MathProgBase = "fdba3010-5040-5b88-9595-932c9decdf73"
