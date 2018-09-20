@@ -26,15 +26,24 @@ function notIstrat(game::Array{Tuple{T, T}, 2} where {T<:Real})
     a[size(a,1), 1] = 0
     sense[end] = '='
     b[end] = 1
-    println("a = $a")
-    println("b = $b")
-    println("c = $c")
-    println("s = $sense")
-    println("l = $l")
-    println("u = $u")
     sol = linprog(c, a, sense, b, l, u, Clp.ClpSolver())
     return sol
+end
     
+function Istrat(game::Array{Tuple{T, T}, 2} where {T<:Real})
+    transgame = transposeGame(game)
+    sol = notIstrat(transgame)
+
+end
+
+function transposeGame(game::Array{Tuple{T, T}, 2} where {T<:Real})
+    tran = Array{Tuple{Real, Real}}(undef, size(game, 2), size(game,1))
+    for i in 1:size(game,1)
+        for j in 1:size(game,2)
+            tran[j, i] = game[i, j]
+        end
+    end
+    tran
 end
 
 end # module
