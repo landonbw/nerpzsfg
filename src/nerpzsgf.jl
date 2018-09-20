@@ -46,4 +46,15 @@ function transposeGame(game::Array{Tuple{T, T}, 2} where {T<:Real})
     tran
 end
 
+function findne(game::Array{Tuple{T, T}, 2} where {T<:Real}, printOutput::Bool=false)
+    isol = Istrat(game)
+    notisol = notIstrat(game)
+    if printOutput
+        println("For I:\n\tExpected utility:\t$(isol.sol[1])\n\tStrategy:\t\t$(isol.sol[2:end])")
+        println("For not I:\n\tExpected utility:\t$(notisol.sol[1])\n\tStrategy:\t\t$(notisol.sol[2:end])")
+    end
+
+    solset = [isol.sol, notisol.sol]
+end
+
 end # module
